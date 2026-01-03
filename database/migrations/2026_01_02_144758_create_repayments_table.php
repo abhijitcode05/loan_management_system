@@ -9,18 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-public function up()
+    public function up()
 {
-    Schema::create('customers', function (Blueprint $table) {
+    Schema::create('repayments', function (Blueprint $table) {
         $table->id();
-        $table->string('name');
-        $table->string('email')->unique();
-        $table->string('phone');
-        $table->text('address')->nullable();
+        $table->foreignId('loan_id')->constrained()->onDelete('cascade');
+        $table->decimal('amount_paid', 10, 2);
+        $table->date('payment_date');
         $table->timestamps();
     });
 }
-
 
 
 
@@ -29,6 +27,6 @@ public function up()
      */
     public function down(): void
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('repayments');
     }
 };

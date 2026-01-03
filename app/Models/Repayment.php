@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Repayment extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'email',
-        'phone',
-        'address'
+        'loan_id',
+        'amount_paid',
+        'payment_date'
     ];
-    public function loans()
-{
-    return $this->hasMany(Loan::class);
-}
 
+    public function loan()
+    {
+        return $this->belongsTo(Loan::class);
+    }
 }

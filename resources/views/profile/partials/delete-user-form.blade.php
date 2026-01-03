@@ -9,10 +9,13 @@
         </p>
     </header>
 
-    <x-danger-button
+    <button
+        type="button"
         x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >{{ __('Delete Account') }}</x-danger-button>
+        class="bg-gray-800 hover:bg-gray-900 text-white rounded-full px-5 py-2 shadow-sm transition">
+        {{ __('Delete Account') }}
+    </button>
 
     <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
         <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
@@ -42,13 +45,13 @@
             </div>
 
             <div class="mt-6 flex justify-end">
-                <x-secondary-button x-on:click="$dispatch('close')">
+                <x-secondary-button x-on:click="$dispatch('close')" class="bg-white text-gray-700 border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-100">
                     {{ __('Cancel') }}
                 </x-secondary-button>
 
-                <x-danger-button class="ms-3">
+                <button type="submit" class="ms-3 bg-gray-800 hover:bg-gray-900 text-white rounded-full px-5 py-2 shadow-sm transition">
                     {{ __('Delete Account') }}
-                </x-danger-button>
+                </button>
             </div>
         </form>
     </x-modal>
