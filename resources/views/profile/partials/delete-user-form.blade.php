@@ -49,9 +49,9 @@
                     {{ __('Cancel') }}
                 </x-secondary-button>
 
-                <button type="submit" class="ms-3 bg-gray-800 hover:bg-gray-900 text-white rounded-full px-5 py-2 shadow-sm transition">
-                    {{ __('Delete Account') }}
-                </button>
+                <x-danger-button class="bg-red-600 hover:bg-red-700 focus:ring-red-500 rounded-lg px-6">
+                    {{ __('Delete Account Permanently') }}
+                </x-danger-button>
             </div>
         </form>
     </x-modal>

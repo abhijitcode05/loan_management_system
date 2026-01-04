@@ -32,9 +32,10 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <button type="submit" class="bg-gray-800 hover:bg-gray-900 text-white rounded-full px-5 py-2 shadow-sm transition">
-                {{ __('Save') }}
-            </button>
+            <x-primary-button class="bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 rounded-lg px-6">
+                {{ __('Save Changes') }}
+            </x-primary-button>
+
 
             @if (session('status') === 'password-updated')
                 <p
