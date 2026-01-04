@@ -1,45 +1,80 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Loan</title>
-</head>
-<body>
+@extends('layouts.app')
 
-<h2>Create Loan</h2>
+@section('content')
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
 
-@if ($errors->any())
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li style="color:red">{{ $error }}</li>
-        @endforeach
-    </ul>
-@endif
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Create Loan</h5>
+                </div>
 
-<form method="POST" action="{{ route('loans.store') }}">
-    @csrf
+                <div class="card-body">
 
-    <label>Customer:</label><br>
-    <select name="customer_id">
-        <option value="">Select Customer</option>
-        @foreach($customers as $customer)
-            <option value="{{ $customer->id }}">{{ $customer->name }}</option>
-        @endforeach
-    </select><br><br>
+                    <!-- Display Validation Errors -->
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-    <label>Loan Amount:</label><br>
-    <input type="number" name="amount"><br><br>
+                    <form method="POST" action="{{ route('loans.store') }}">
+                        @csrf
 
-    <label>Interest Rate (% per month):</label><br>
-    <input type="number" step="0.01" name="interest_rate"><br><br>
+                        <!-- Customer -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Customer</label>
+                            <select name="customer_id" class="form-select" required>
+                                <option value="">Select Customer</option>
+                                @foreach ($customers as $customer)
+                                    <option value="{{ $customer->id }}">
+                                        {{ $customer->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
 
-    <label>Duration (months):</label><br>
-    <input type="number" name="duration"><br><br>
+                        <!-- Loan Amount -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Loan Amount</label>
+                            <input type="number" name="amount" class="form-control" placeholder="Enter loan amount" required>
+                        </div>
 
-    <label>Start Date:</label><br>
-    <input type="date" name="start_date"><br><br>
+                        <!-- Interest Rate -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Interest Rate (% per month)</label>
+                            <input type="number" step="0.01" name="interest_rate" class="form-control" placeholder="e.g. 10" required>
+                        </div>
 
-    <button type="submit">Create Loan</button>
-</form>
+                        <!-- Duration -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Duration (months)</label>
+                            <input type="number" name="duration" class="form-control" placeholder="e.g. 12" required>
+                        </div>
 
-</body>
-</html>
+                        <!-- Start Date -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Start Date</label>
+                            <input type="date" name="start_date" class="form-control" required>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-success px-4">
+                                Create Loan
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@endsection

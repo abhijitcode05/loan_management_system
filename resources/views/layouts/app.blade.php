@@ -23,12 +23,22 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar position-fixed">
-        <h4 class="text-center mt-3">Dashboard</h4>
-        <hr class="bg-light">
-        <a href="{{ route('loans.index') }}">Loans</a>
-        <a href="{{ route('customers.index') }}">Customers</a>
-        <a href="#">Reports</a>
-    </div>
+    <h4 class="text-center mt-3">Loan MS</h4>
+    <hr class="bg-light">
+
+    <!-- Dashboard -->
+    <a href="{{ route('dashboard') }}">Dashboard</a>
+
+    <!-- Loans -->
+    <a href="{{ route('loans.index') }}">Loans</a>
+
+    <!-- Customers -->
+    <a href="{{ route('customers.index') }}">Customers</a>
+
+    <!-- Reports (future) -->
+    <a href="#">Reports</a>
+</div>
+
 
     <!-- Main content -->
     <div class="content">
