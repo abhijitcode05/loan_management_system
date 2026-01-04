@@ -46,9 +46,10 @@
                                     <td class="px-6 py-4 text-center space-x-2">
 
                                         <a href="{{ route('customers.edit', $customer->id) }}"
-                                           class="inline-flex items-center px-3 py-1.5 bg-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-600 transition">
-                                            Edit
+                                                class="inline-block px-3 py-1.5 bg-yellow-500 text-black text-xs font-semibold rounded-lg border border-yellow-600 hover:bg-yellow-600 transition">
+                                                        Edit
                                         </a>
+
 
                                         <form action="{{ route('customers.destroy', $customer->id) }}"
                                               method="POST" class="inline">
