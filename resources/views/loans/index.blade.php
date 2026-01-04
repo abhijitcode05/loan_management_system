@@ -63,12 +63,12 @@
                 <div class="card-header bg-primary text-white">
                     Loan #{{ $loan->id }} - {{ $loan->customer->name }}
                 </div>
-                <div class="card-body">
-                    <p><strong>Principal:</strong> ₹{{ $loan->amount }}</p>
-                    <p><strong>Total Payable:</strong> ₹{{ $loan->total_payable }}</p>
-                    <p><strong>Total Paid:</strong> ₹{{ $loan->repayments->sum('amount_paid') }}</p>
-                    <p><strong>Remaining:</strong> ₹{{ $loan->total_payable - $loan->repayments->sum('amount_paid') }}</p>
-                    <p>
+                <div class="card-body py-4" style="min-height: 220px;">
+                    <p class="mb-2"><strong>Principal:</strong> ₹{{ $loan->amount }}</p>
+                    <p class="mb-2"><strong>Total Payable:</strong> ₹{{ $loan->total_payable }}</p>
+                    <p class="mb-2"><strong>Total Paid:</strong> ₹{{ $loan->repayments->sum('amount_paid') }}</p>
+                    <p class="mb-2"><strong>Remaining:</strong> ₹{{ $loan->total_payable - $loan->repayments->sum('amount_paid') }}</p>
+                    <p class="mb-2">
                         <strong>Status:</strong>
                         <span class="badge {{ $loan->status == 'completed' ? 'bg-success' : 'bg-warning' }}">
                             {{ ucfirst($loan->status) }}
